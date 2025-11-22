@@ -1,0 +1,48 @@
+<header class="header">
+  <h1>Cadastro de Cuidados</h1>
+  <p>{{ editMode ? 'Atualizar Cuidado' : 'Cadastrar Novo Cuidado' }}</p>
+</header>
+
+<div class="form-container">
+  <form (ngSubmit)="onSubmit()" class="care-form">
+    <div class="form-group">
+      <label for="nomeCuidado">Nome do Cuidado</label>
+      <input [(ngModel)]="cuidado.nomeCuidado" name="nomeCuidado" id="nomeCuidado" required />
+    </div>
+
+    <div class="form-group">
+      <label for="descricao">Descrição</label>
+      <textarea [(ngModel)]="cuidado.descricao" name="descricao" id="descricao"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="frequencia">Frequência</label>
+      <select [(ngModel)]="cuidado.frequencia" name="frequencia" id="frequencia" required>
+        <option value="Diaria">Diária</option>
+        <option value="Semanal">Semanal</option>
+        <option value="Mensal">Mensal</option>
+        <option value="Anual">Anual</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="animal">Animal</label>
+      <select [(ngModel)]="cuidado.animal_id" name="animal_id" id="animal" required>
+        <option *ngFor="let animal of animais" [value]="animal.id">
+          {{ animal.nome }} ({{ animal.especie }})
+        </option>
+      </select>
+    </div>
+
+    <button type="submit" class="btn-submit">
+      {{ editMode ? 'Atualizar' : 'Cadastrar' }}
+    </button>
+  </form>
+
+  <div *ngIf="mensagemSucesso" class="alert success">{{ mensagemSucesso }}</div>
+  <div *ngIf="mensagemErro" class="alert error">{{ mensagemErro }}</div>
+</div>
+
+<footer class="footer">
+  <p>Desafio Estágio Dev - CIEE/PR © 2025</p>
+</footer>

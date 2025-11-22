@@ -1,0 +1,43 @@
+<header class="header">
+  <h1>Lista de Cuidados</h1>
+  <p>Gerencie os cuidados e rotinas dos animais</p>
+</header>
+
+<div class="list-container">
+  <button routerLink="/cuidados/novo" class="btn-new">+ Novo Cuidado</button>
+
+  <div *ngIf="mensagemErro" class="alert error">{{ mensagemErro }}</div>
+  <div *ngIf="mensagemSucesso" class="alert success">{{ mensagemSucesso }}</div>
+
+  <table class="care-table" *ngIf="cuidados.length > 0; else vazio">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Descrição</th>
+        <th>Frequência</th>
+        <th>Animal</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cuidado of cuidados">
+        <td>{{ cuidado.nomeCuidado }}</td>
+        <td>{{ cuidado.descricao }}</td>
+        <td>{{ cuidado.frequencia }}</td>
+        <td>{{ cuidado.animal_id || '---' }}</td>
+        <td>
+          <button [routerLink]="['/cuidados/editar', cuidado.id]" class="btn-edit">Editar</button>
+          <button (click)="deleteCuidado(cuidado.id!)" class="btn-delete">Remover</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <ng-template #vazio>
+    <p class="empty">Nenhum cuidado cadastrado ainda.</p>
+  </ng-template>
+</div>
+
+<footer class="footer">
+  <p>Desafio Estágio Dev - CIEE/PR © 2025</p>
+</footer>

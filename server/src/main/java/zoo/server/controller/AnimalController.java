@@ -20,7 +20,7 @@ import zoo.server.entity.Animal;
 import zoo.server.service.AnimalService;
 
 @RestController
-@RequestMapping("/api/animal")
+@RequestMapping("/api/animais")
 public class AnimalController {
     
     private final AnimalService animalService;

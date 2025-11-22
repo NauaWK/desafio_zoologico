@@ -19,7 +19,7 @@ import zoo.server.entity.Cuidado;
 import zoo.server.service.CuidadoService;
 
 @RestController
-@RequestMapping("/api/cuidado")
+@RequestMapping("/api/cuidados")
 public class CuidadoController {
     
     private final CuidadoService cuidadoService;

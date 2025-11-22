@@ -1,0 +1,43 @@
+<header class="header">
+  <h1>Lista de Animais</h1>
+  <p>Gerencie os animais cadastrados</p>
+</header>
+
+<div class="list-container">
+  <button routerLink="/animais/novo" class="btn-new">+ Novo Animal</button>
+
+  <div *ngIf="mensagemErro" class="alert error">{{ mensagemErro }}</div>
+  <div *ngIf="mensagemSucesso" class="alert success">{{ mensagemSucesso }}</div>
+
+  <table class="animal-table" *ngIf="animais.length > 0; else vazio">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Espécie</th>
+        <th>Habitat</th>
+        <th>País de Origem</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let animal of animais">
+        <td>{{ animal.nome }}</td>
+        <td>{{ animal.especie }}</td>
+        <td>{{ animal.habitat }}</td>
+        <td>{{ animal.paisOrigem }}</td>
+        <td>
+          <button [routerLink]="['/animais/editar', animal.id]" class="btn-edit">Editar</button>
+          <button (click)="deleteAnimal(animal.id!)" class="btn-delete">Remover</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <ng-template #vazio>
+    <p class="empty">Nenhum animal cadastrado ainda.</p>
+  </ng-template>
+</div>
+
+<footer class="footer">
+  <p>Desafio Estágio Dev - CIEE/PR © 2025</p>
+</footer>

@@ -14,7 +14,7 @@ public enum FrequenciaCuidado {
         try {
             return FrequenciaCuidado.valueOf(frequencia.toUpperCase());
         } catch (IllegalArgumentException e) {
-            throw new InvalidEnumException("Frequência inválida: " + frequencia);
+            throw new InvalidEnumException("Frequência inválida!");
         }                       
     }   
     

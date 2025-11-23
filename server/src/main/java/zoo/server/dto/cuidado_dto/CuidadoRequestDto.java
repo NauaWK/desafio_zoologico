@@ -9,17 +9,17 @@ import zoo.server.utils.enums.FrequenciaCuidado;
 public record CuidadoRequestDto(
         
         @NotBlank(message = "Nome do cuidado é obrigatório!")
-        @Size(min = 10, max = 30, message = "Nome do cuidado precisa ter entre 10 a 30 carácteres")
+        @Size(min = 5, max = 30, message = "Nome do cuidado precisa ter entre 5 a 30 carácteres")
         String nomeCuidado,
         
         //descrição opcional
-        @Size(max = 50, message = "Descrição do cuidado não pode ultrapassar 50 carácteres")
+        @Size(max = 40, message = "Descrição do cuidado não pode ultrapassar 40 carácteres")
         String descricao,
         
         @NotNull(message = "Frequência do cuidado é obrigatória!")
         FrequenciaCuidado frequencia,
         
-        @NotNull(message = "Identificador do animal relacionado a este cuidado é obrigatório!")
+        @NotNull(message = "Identificador do animal (ID) relacionado a este cuidado é obrigatório!")
         Long animal_id
         
         ) {}

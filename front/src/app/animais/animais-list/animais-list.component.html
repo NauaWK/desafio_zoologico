@@ -4,7 +4,22 @@
 </header>
 
 <div class="list-container">
-  <button routerLink="/animais/novo" class="btn-new">+ Novo Animal</button>
+  <div class="actions">
+    <button routerLink="/animais/novo" class="btn-new">+ Novo Animal</button>
+
+    <div class="search-group">
+      <div class="form-inline">
+        <input type="number" [(ngModel)]="searchId" placeholder="ID do animal" />
+        <button (click)="buscarPorId()" class="btn-search">Buscar por ID</button>
+      </div>
+
+      <div class="form-inline">
+        <input type="text" [(ngModel)]="searchHabitat" placeholder="Habitat" />
+        <input type="text" [(ngModel)]="searchEspecie" placeholder="Espécie" />
+        <button (click)="buscarPorFiltro()" class="btn-search">Buscar com filtros</button>
+      </div>
+    </div>
+  </div>
 
   <div *ngIf="mensagemErro" class="alert error">{{ mensagemErro }}</div>
   <div *ngIf="mensagemSucesso" class="alert success">{{ mensagemSucesso }}</div>
@@ -12,7 +27,10 @@
   <table class="animal-table" *ngIf="animais.length > 0; else vazio">
     <thead>
       <tr>
+        <th>ID</th>
         <th>Nome</th>
+        <th>Descrição</th>
+        <th>Data de nascimento</th>
         <th>Espécie</th>
         <th>Habitat</th>
         <th>País de Origem</th>
@@ -21,10 +39,13 @@
     </thead>
     <tbody>
       <tr *ngFor="let animal of animais">
+        <td>{{ animal.id }}</td>
         <td>{{ animal.nome }}</td>
+        <td>{{ animal.descricao }}</td>
+        <td>{{ animal.data_nascimento }}</td>
         <td>{{ animal.especie }}</td>
         <td>{{ animal.habitat }}</td>
-        <td>{{ animal.paisOrigem }}</td>
+        <td>{{ animal.pais_origem }}</td>
         <td>
           <button [routerLink]="['/animais/editar', animal.id]" class="btn-edit">Editar</button>
           <button (click)="deleteAnimal(animal.id!)" class="btn-delete">Remover</button>

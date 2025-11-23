@@ -16,15 +16,19 @@ export class AnimaisFormComponent implements OnInit {
   animal: Animal = {
     nome: '',
     descricao: '',
-    dataNascimento: '',
+    data_nascimento: '',
     especie: '',
     habitat: '',
-    paisOrigem: ''
+    pais_origem: ''
   };
 
-  mensagemSucesso: string | null = null;
+  //objeto que guarda todos os campos com erro do JSON que vem do backend (múltiplos campos)
+  mensagensErro: { [campo: string]: string } = {};
+
+  //mensagem geral de erro
   mensagemErro: string | null = null;
 
+  mensagemSucesso: string | null = null;
   editMode = false;
 
   constructor(
@@ -47,12 +51,27 @@ export class AnimaisFormComponent implements OnInit {
   onSubmit() {
     if (this.editMode) {
       this.animaisService.updateAnimal(this.animal.id!, this.animal).subscribe({
-        next: () => alert('Animal atualizado com sucesso!')
+        next: () => {
+          this.mensagemSucesso = 'Animal atualizado com sucesso!';
+          this.mensagensErro = {}; //limpa os erros
+        },
+        error: (erro) => {
+          this.mensagemErro = erro.error.error; // mensagem geral
+          this.mensagensErro = erro.error;      // guarda todos os campos do form que contém erro
+        }
       });
     } else {
       this.animaisService.createAnimal(this.animal).subscribe({
-        next: () => alert('Animal cadastrado com sucesso!')
+        next: () => {
+          this.mensagemSucesso = 'Animal cadastrado com sucesso!';
+          this.mensagensErro = {}; 
+        },
+        error: (erro) => {
+          this.mensagemErro = erro.error.error; 
+          this.mensagensErro = erro.error;      
+        }
       });
     }
   }
+
 }

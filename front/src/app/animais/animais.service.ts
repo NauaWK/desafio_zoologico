@@ -18,6 +18,14 @@ export class AnimaisService {
     return this.http.get<Animal>(`${this.apiUrl}/${id}`)
   }
 
+  getAnimaisByFiltro(habitat? : string, especie? : string){
+    let params: any = {};
+    if (habitat) params.habitat = habitat;
+    if (especie) params.especie = especie;
+
+    return this.http.get<Animal[]>(`${this.apiUrl}`, { params });
+  }
+
   createAnimal(animal: Animal){
     return this.http.post(this.apiUrl, animal);
   }

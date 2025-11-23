@@ -1,6 +1,6 @@
 <header class="header">
   <h1>Cadastro de Animais</h1>
-  <p>{{ editMode ? 'Atualizar Animal' : 'Cadastrar Novo Animal' }}</p>
+  <p>{{ editMode ? 'Atualizar Animal' : 'Cadastrar Animal' }}</p>
 </header>
 
 <div class="form-container">
@@ -8,31 +8,49 @@
     <div class="form-group">
       <label for="nome">Nome</label>
       <input [(ngModel)]="animal.nome" name="nome" id="nome" required />
+      <div *ngIf="mensagensErro['nome']" class="alert error">
+        {{ mensagensErro['nome'] }}
+      </div>
     </div>
 
     <div class="form-group">
       <label for="descricao">Descrição</label>
       <textarea [(ngModel)]="animal.descricao" name="descricao" id="descricao"></textarea>
+      <div *ngIf="mensagensErro['descricao']" class="alert error">
+        {{ mensagensErro['descricao'] }}
+      </div>
     </div>
 
     <div class="form-group">
       <label for="dataNascimento">Data de Nascimento</label>
-      <input type="date" [(ngModel)]="animal.dataNascimento" name="dataNascimento" id="dataNascimento" />
+      <input type="date" [(ngModel)]="animal.data_nascimento" name="dataNascimento" id="dataNascimento" />
+      <div *ngIf="mensagensErro['data_nascimento']" class="alert error">
+        {{ mensagensErro['data_nascimento'] }}
+      </div>
     </div>
 
     <div class="form-group">
       <label for="especie">Espécie</label>
       <input [(ngModel)]="animal.especie" name="especie" id="especie" required />
+      <div *ngIf="mensagensErro['especie']" class="alert error">
+        {{ mensagensErro['especie'] }}
+      </div>
     </div>
 
     <div class="form-group">
       <label for="habitat">Habitat</label>
       <input [(ngModel)]="animal.habitat" name="habitat" id="habitat" />
+      <div *ngIf="mensagensErro['habitat']" class="alert error">
+        {{ mensagensErro['habitat'] }}
+      </div>
     </div>
 
     <div class="form-group">
       <label for="paisOrigem">País de Origem</label>
-      <input [(ngModel)]="animal.paisOrigem" name="paisOrigem" id="paisOrigem" />
+      <input [(ngModel)]="animal.pais_origem" name="paisOrigem" id="paisOrigem" />
+      <div *ngIf="mensagensErro['pais_origem']" class="alert error">
+        {{ mensagensErro['pais_origem'] }}
+      </div>
     </div>
 
     <button type="submit" class="btn-submit">

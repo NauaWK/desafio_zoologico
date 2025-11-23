@@ -49,6 +49,10 @@ public class AnimalService {
     public List<AnimalResponseDto> getAnimalsWithFilters(String habitat, String especie){
         List<Animal> animals =  repository.getAnimalsWithFilters(habitat, especie);
         
+        if(animals.isEmpty()){
+            throw new ObjectNotFoundException("Nenhum animal encontrado!");
+        }
+        
         List<AnimalResponseDto> response = animals.stream().map(animal -> new AnimalResponseDto(
                 animal.getId(),
                 animal.getNome(),

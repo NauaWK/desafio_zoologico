@@ -22,9 +22,11 @@ export class CuidadosFormComponent implements OnInit {
     animal_id: undefined
   };
 
-  mensagemSucesso: string | null = null;
-  mensagemErro: string | null = null;
   animais: Animal[] = [];
+
+  mensagensErro: { [campo: string]: string } = {};
+  mensagemErro: string | null = null;
+  mensagemSucesso: string | null = null;
   editMode = false;
 
   constructor(
@@ -48,11 +50,25 @@ export class CuidadosFormComponent implements OnInit {
   onSubmit() {
     if (this.editMode) {
       this.cuidadosService.updateCuidado(this.cuidado.id!, this.cuidado).subscribe({
-        next: () => alert('Cuidado atualizado com sucesso!')
+        next: () => {
+          this.mensagemSucesso = 'Cuidado atualizado com sucesso!';
+          this.mensagensErro = {}; 
+        },
+        error: (erro) => {
+          this.mensagemErro = erro.error.error; 
+          this.mensagensErro = erro.error;      
+        }
       });
     } else {
       this.cuidadosService.createCuidado(this.cuidado).subscribe({
-        next: () => alert('Cuidado cadastrado com sucesso!')
+        next: () => {
+          this.mensagemSucesso = 'Cuidado cadastrado com sucesso!';
+          this.mensagensErro = {}; 
+        },
+        error: (erro) => {
+          this.mensagemErro = erro.error.error; 
+          this.mensagensErro = erro.error;      
+        }
       });
     }
   }

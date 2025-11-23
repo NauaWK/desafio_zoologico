@@ -4,7 +4,14 @@
 </header>
 
 <div class="list-container">
-  <button routerLink="/cuidados/novo" class="btn-new">+ Novo Cuidado</button>
+  <div class="actions">
+    <button routerLink="/cuidados/novo" class="btn-new">+ Novo Cuidado</button>
+
+    <div class="form-inline">
+      <input type="number" [(ngModel)]="searchId" placeholder="ID do cuidado" />
+      <button (click)="buscarPorId()" class="btn-search">Buscar por ID</button>
+    </div>
+  </div>
 
   <div *ngIf="mensagemErro" class="alert error">{{ mensagemErro }}</div>
   <div *ngIf="mensagemSucesso" class="alert success">{{ mensagemSucesso }}</div>
@@ -12,19 +19,21 @@
   <table class="care-table" *ngIf="cuidados.length > 0; else vazio">
     <thead>
       <tr>
+        <th>ID</th>
         <th>Nome</th>
         <th>Descrição</th>
         <th>Frequência</th>
-        <th>Animal</th>
+        <th>ID do animal</th>
         <th>Ações</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let cuidado of cuidados">
+        <td>{{ cuidado.id }}</td>
         <td>{{ cuidado.nomeCuidado }}</td>
         <td>{{ cuidado.descricao }}</td>
         <td>{{ cuidado.frequencia }}</td>
-        <td>{{ cuidado.animal_id || '---' }}</td>
+        <td>{{ cuidado.animal_id }}</td>
         <td>
           <button [routerLink]="['/cuidados/editar', cuidado.id]" class="btn-edit">Editar</button>
           <button (click)="deleteCuidado(cuidado.id!)" class="btn-delete">Remover</button>

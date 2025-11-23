@@ -3,9 +3,9 @@ export interface Animal{
     id?: number,
     nome: string,
     descricao: string,
-    dataNascimento: string,
+    data_nascimento: string,
     especie: string,
     habitat: string,
-    paisOrigem: string
+    pais_origem: string
 
 }

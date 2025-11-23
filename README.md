@@ -35,7 +35,7 @@ Tanto as entidades Animal quanto Cuidado possuem as 4 operações CRUD distintas
 ## Passos para execução:
 
 1. Clone o repositório com Git ou baixe o arquivo ZIP e extraia
-2. Navegue até a pasta `server` e execute `java -jar target/server-0.0.1-SNAPSHOT` (se estiver usando Maven, execute `mvn spring-boot:run` na pasta raíz `server`)
+2. Navegue até a pasta `server` e execute `java -jar target/server-0.0.1-SNAPSHOT.jar` (se estiver usando Maven, execute `mvn spring-boot:run` na pasta raíz `server`)
 3. Navegue até a pasta `front` e execute `ng serve`
 4. Acesse `http://localhost:4200` no navegador
 

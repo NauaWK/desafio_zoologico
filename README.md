@@ -20,9 +20,7 @@ Banco relacional H2 em memória
 
 Java 21+
 
-Node.js 
-
-Angular CLI 17+
+Node.js com Angular CLI 17+
 
 *Opcional:* Maven
 

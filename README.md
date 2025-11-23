@@ -40,9 +40,8 @@ Tanto as entidades Animal quanto Cuidado possuem as 4 operações CRUD distintas
 4. Acesse `http://localhost:4200` no navegador
 
 
-**Extra:**
+## Extra:
 
 → Após iniciar a aplicação, você pode também acessar o Swagger UI para visualização dos endpoints e executar requisições diretamente para o servidor:
 
 Swagger UI: `http://localhost:8080/swagger-ui/index.html`
-

@@ -32,7 +32,7 @@ Angular CLI 17+
 Tanto as entidades Animal quanto Cuidado possuem as 4 operações CRUD distintas (GET, POST, PUT, DELETE) e busca por ID. Além disso, a entidade Animal possui rotas GET com filtros de habitat e espécie.
 
 
-**Passos para execução:**
+## Passos para execução:
 
 1. Clone o repositório com Git ou baixe o arquivo ZIP e extraia
 2. Navegue até a pasta `server` e execute `java -jar target/server-0.0.1-SNAPSHOT` (se estiver usando Maven, execute `mvn spring-boot:run` na pasta raíz `server`)

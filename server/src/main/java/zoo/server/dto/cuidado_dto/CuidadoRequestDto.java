@@ -19,7 +19,7 @@ public record CuidadoRequestDto(
         @NotNull(message = "Frequência do cuidado é obrigatória!")
         FrequenciaCuidado frequencia,
         
-        @NotNull(message = "Identificador do animal (ID) relacionado a este cuidado é obrigatório!")
+        @NotNull(message = "O animal relacionado a este cuidado é obrigatório!")
         Long animal_id
         
         ) {}

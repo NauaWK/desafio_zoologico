@@ -41,9 +41,7 @@ export class AnimaisFormComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
       this.editMode = true;
-      this.animaisService.getAnimalById(+id).subscribe({
-        next: (dados) => this.animal = dados
-      });
+      this.animaisService.getAnimalById(+id).subscribe(dados => this.animal = dados);
     }
   }
 
